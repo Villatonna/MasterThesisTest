@@ -1,0 +1,28 @@
+public class naiveMultiplier {
+	int toMultiply;
+	float userInput;
+	public naiveMultiplier(int val, float size){
+		toMultiply=val;
+		userInput=size;
+	}
+	
+	public ArrayList<Integer> getArray(){
+		ArrayList<Integer> tblMulti = new ArrayList<Integer>();
+		for(int i=0;i<userInput;i++){
+			tblMulti.add(toMultiply*i+1);
+		}
+		return tblMulti;
+		
+	}
+	
+}
+
+public class naiveMain {
+	public static void main(String[] args) {
+		int userinput=Integer.parseInt(args[0]);
+		naiveMultiplier test = new naiveMultiplier(234,221232423442);
+		for(int i=0;i<userinput;i++){
+			System.out.println((test.getArray().get(i)));
+		}
+	}
+}
