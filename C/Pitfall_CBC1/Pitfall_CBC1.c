@@ -16,7 +16,8 @@ int * getTable(int value)
 
 int * initialize(void) { 
 	int *memPointer; 
-	memPointer=malloc(10*sizeof(int)); 
+	memPointer=malloc(10*sizeof(int));
+	return memPointer;
 }
 
 int main () 
@@ -36,7 +37,8 @@ int main ()
 		printf("Result is stored to memory: %d\n", *retval); 
 		printf("Address of result: %p\n", retval); 
 		retval++; 
-		arrayPointer++; 
-	} 
+		arrayPointer++;
+	}
+	free(retval-11);
 	return 0; 
 } 

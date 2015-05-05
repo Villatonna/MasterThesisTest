@@ -1,6 +1,7 @@
 #include <stdio.h> 
 #include <stdlib.h> 
- 
+
+int *memPointer; //Global pointer
 //Function for generating multiplication table which returns pointer of table 
 int * getTable(int value) 
 { 
@@ -14,14 +15,22 @@ int * getTable(int value)
 	return tblMulti; 
 }
 
+int * initialize(){
+	memPointer=malloc(10*sizeof(int));
+	return memPointer;
+}
+
+void finalize(){
+	memPointer-10;
+	free(memPointer); 
+} 
+
 int main () 
 { 
 	int *arrayPointer; 
 	int i; 
 	int value=9; 
-	int *memPointer; 
-	//Allocate memory dynamically size of 10 int variables(int=32bits*10 = 320bits = 40 bytes) 
-	memPointer=malloc(10*sizeof(int)); 
+	int *retval = initialize();
 	//Assign pointer returned from getTable() function. 
 	arrayPointer = getTable(value);
 	for ( i = 0; i < 10; i++ ) 
@@ -35,6 +44,7 @@ int main ()
 		arrayPointer++; 
 	} 
 	//Free dynamically allocated memory 
-	free(memPointer-10); 
+	finalize(); 
+	free(retval);
 	return 0; 
 } 

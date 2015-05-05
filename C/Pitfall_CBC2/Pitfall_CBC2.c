@@ -17,7 +17,8 @@ int * getTable(int value)
 int * initialize(int untrusted_value) 
 { 
 	int *memPointer; 
-	memPointer=malloc(untrusted_value*sizeof(int)); 
+	memPointer=malloc(untrusted_value*sizeof(int));
+	return memPointer;
 } 
 
 int main (int argc, char *argv[]) 
@@ -30,9 +31,9 @@ int main (int argc, char *argv[])
 	retval = initialize(untrusted); 
 	//Assign pointer returned from getTable() function. 
 	arrayPointer = getTable(value);
-	for ( i = 0; i < 11; i++ ) 
+	for ( i = 0; i < 10; i++ ) 
 	{ 
-		printf("Multiplication of %d with %d is %d\n",value, i+1, 				*arrayPointer); 
+		printf("Multiplication of %d with %d is %d\n",value, i+1, *arrayPointer); 
 		//Store array value to memory 
 		*retval=*arrayPointer; 
 		printf("Result is stored to memory: %d\n", *retval); 
@@ -40,5 +41,6 @@ int main (int argc, char *argv[])
 		retval++; 
 		arrayPointer++; 
 	} 
+	free(retval-10);
 	return 0; 
 }

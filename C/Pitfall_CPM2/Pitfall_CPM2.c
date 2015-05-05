@@ -15,21 +15,22 @@ int * getTable(int value)
 	return tblMulti; 
 }
 
-int * initialize(){
+int* initialize(){
 	memPointer=malloc(10*sizeof(int));
 	return memPointer;
 }
 
-void finalize(){ 
+void finalize(){
+	memPointer-10;
 	free(memPointer); 
 } 
 
 int main () 
 { 
-	int *arrayPointer; 
-	int i; 
+	int *arrayPointer, *retval; 
+	int i;
 	int value=9; 
-	int *retval = initialize();
+	retval=initialize();
 	//Assign pointer returned from getTable() function. 
 	arrayPointer = getTable(value);
 	for ( i = 0; i < 10; i++ ) 
@@ -42,8 +43,8 @@ int main ()
 		memPointer++; 
 		arrayPointer++; 
 	} 
-	//Free dynamically allocated memory 
-	finalize(); 
-	printf("Result is stored to memory: %d\n", *retval);
+	//Free dynamically allocated memory
+	free(retval);
+	printf("Result is stored to memory: %d\n", *memPointer);
 	return 0;
 } 

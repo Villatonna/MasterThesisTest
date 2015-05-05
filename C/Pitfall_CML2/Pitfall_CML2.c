@@ -16,7 +16,8 @@ int * getTable(int value)
 
 int * initialize(void) {
 	int *memPointer; 
-	memPointer=malloc(10*sizeof(int)); 
+	memPointer=malloc(10*sizeof(int));
+	return memPointer;
 } 
 
 void finalize(int *params){ 
@@ -25,7 +26,8 @@ void finalize(int *params){
 
 int main () 
 { 
-	int *arrayPointer; 
+	int *arrayPointer;
+	int *tempPointer;
 	int i; 
 	int value=9; 
 	int *retval; 
@@ -36,13 +38,12 @@ int main ()
 	{ 
 		printf("Multiplication of %d with %d is %d\n",value, i+1, *arrayPointer); 
 		//Store array value to memory 
-		*memPointer=*arrayPointer; 
-		printf("Result is stored to memory: %d\n", *memPointer); 
-		printf("Address of result: %p\n", memPointer); 
-		memPointer++; 
+		*retval=*arrayPointer; 
+		printf("Result is stored to memory: %d\n", *retval); 
+		printf("Address of result: %p\n", retval); 
+		tempPointer++; 
 		arrayPointer++; 
-	} 
-	//Free dynamically allocated memory 
-	free(memPointer-10); 
+	}
+	//finalize(retval);
 	return 0; 
 } 

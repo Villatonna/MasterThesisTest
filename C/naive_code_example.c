@@ -18,7 +18,9 @@ int * getTable(int value)
 
 int * initialize(int untrusted_value)
 {
-	memPointer=malloc(untrusted_value*sizeof(int));
+	int *funcMemPointer;
+	funcMemPointer=malloc(untrusted_value*sizeof(int));
+	return funcMemPointer;
 }
 
 

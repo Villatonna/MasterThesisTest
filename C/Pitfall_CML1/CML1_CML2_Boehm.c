@@ -1,0 +1,37 @@
+#include <gc.h>
+#include <stdio.h>
+
+int* stdAlloc(){
+	int* stdPointer;
+	stdPointer=(int*)malloc(100000*sizeof(int));
+	return stdPointer;
+}
+
+int* boehmAlloc(){
+	int* boehmPointer;
+	boehmPointer=(int*)GC_malloc(100000*sizeof(int));
+	return boehmPointer;
+}
+
+int main(void)
+{
+	char inp[20];
+	int* testPointer;
+	GC_INIT();
+	printf("Read process memory allocation from proc\n");
+	scanf("%s",inp);
+	for(int i=0;i<1000;i++){		
+		boehmAlloc();
+	}
+	printf("Read process memory allocation from proc\n");
+	scanf("%s",inp);
+	for(int i=0;i<1000;i++){		
+		stdAlloc();
+	}
+	testPointer=boehmAlloc();
+	GC_free(testPointer);
+	GC_free(testPointer);
+	printf("Read process memory allocation from proc\n");
+	scanf("%s",inp);
+	return 0;
+}

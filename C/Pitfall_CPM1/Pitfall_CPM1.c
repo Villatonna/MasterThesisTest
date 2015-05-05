@@ -20,7 +20,8 @@ int * initialize(){
 	return memPointer;
 }
 
-void finalize(){ 
+void finalize(){
+	memPointer-10;
 	free(memPointer); 
 } 
 
@@ -43,7 +44,7 @@ int main ()
 		arrayPointer++; 
 	} 
 	//Free dynamically allocated memory 
-	finalize(); 
-	free(retval); 
+	finalize();
+	free(retval);
 	return 0; 
 } 

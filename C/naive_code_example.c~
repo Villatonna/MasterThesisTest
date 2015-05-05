@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+
+int *memPointer;
  
 //Function for generating multiplication table which returns pointer of table
 int * getTable(int value)
@@ -16,7 +18,6 @@ int * getTable(int value)
 
 int * initialize(int untrusted_value)
 {
-	static int *memPointer;
 	memPointer=malloc(untrusted_value*sizeof(int));
 }
 
